@@ -1,20 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Buscar Pokémon</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input [(ngModel)]="pokemonName" placeholder="Nombre del Pokémon" type="text"
+    clearInput
+    inputmode="text"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="searchPokemon()">Buscar</ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-spinner *ngIf="loading" class="ion-margin-top"></ion-spinner>
+  <p *ngIf="error" class="ion-text-center ion-margin-top color-danger">{{ error }}</p>
+
+  <div *ngIf="pokemonData" class="ion-text-center ion-margin-top">
+    <h2>{{ pokemonData.name | titlecase }}</h2>
+    <img [src]="pokemonData.sprites.front_default" alt="Imagen de {{ pokemonData.name }}" />
+    <p><strong>Tipos:</strong></p>
+    <ion-chip *ngFor="let type of pokemonData.types">
+      {{ type.type.name }}
+    </ion-chip>
+    <p><strong>Estadísticas:</strong></p>
+    <ion-list>
+      <ion-item *ngFor="let stat of pokemonData.stats">
+        {{ stat.stat.name }}: {{ stat.base_stat }}
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-textarea [(ngModel)]="review" placeholder="Escribe una reseña o opinión"autoGrow="true"
+    style="min-height: 100px"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" color="success" (click)="savePokemon()">Guardar en Firebase</ion-button>
   </div>
 </ion-content>

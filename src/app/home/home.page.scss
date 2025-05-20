@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+ion-input, ion-textarea {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  font-size: 16px;
+}
+
+ion-textarea {
+  min-height: 100px;
+}
