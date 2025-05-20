@@ -1,0 +1,7 @@
+{
+  "name": "PokemonApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
