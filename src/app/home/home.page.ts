@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+//import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -8,12 +8,38 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonItem,
+  IonInput,
+  IonButton,
+  IonSpinner,
+  IonChip,
+  IonList,
+  IonTextarea
+} from '@ionic/angular/standalone';
+
 @Component({
   standalone: true,
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule],
+  imports: [
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonItem,
+  IonInput,
+  IonButton,
+  IonSpinner,
+  IonChip,
+  IonList,
+  IonTextarea,
+  CommonModule, FormsModule, HttpClientModule],
 })
 export class HomePage {
   pokemonName = '';
